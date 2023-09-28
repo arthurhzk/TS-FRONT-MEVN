@@ -1,9 +1,11 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
-  <RouterView />
+  <router-view></router-view>
 </template>
+
+<script lang="ts">
+export default {
+  name: "App",
+};
+</script>
 
 <style scoped></style>
