@@ -23,6 +23,11 @@ const router = createRouter({
       name: "socks",
       component: () => import("@/views/SocksPage.vue"),
     },
+    {
+      path: "/cart",
+      name: "cart",
+      component: () => import("@/views/ProductCart.vue"),
+    },
   ],
 });
 

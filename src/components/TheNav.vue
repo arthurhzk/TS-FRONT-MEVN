@@ -8,7 +8,12 @@
         <the-input placeholder="Procurando por algo?" class="text-sm"
           ><the-icon icon="fas fa-search"></the-icon
         ></the-input>
-        <the-icon class="ml-10" icon="fas fa-shopping-cart"></the-icon>
+        <router-link to="/cart">
+          <the-icon
+            class="cursor-pointer ml-10"
+            icon="fas fa-shopping-cart"
+          ></the-icon>
+        </router-link>
       </div>
     </nav>
   </header>
