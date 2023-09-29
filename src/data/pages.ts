@@ -10,7 +10,7 @@ const pages: Page[] = [
   },
   {
     name: "Tênis",
-    path: "/sneakers",
+    path: "/shoes",
   },
   {
     name: "Meias",

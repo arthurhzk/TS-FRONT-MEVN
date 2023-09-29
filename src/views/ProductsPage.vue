@@ -1,32 +1,43 @@
 <template>
-  <section class="flex justify-around">
-    <div class="flex gap-10">
-      <div v-for="page in pages">
-        <router-link :to="page.path">
-          <h1
-            class="saira font-bold text-lg leading-22 uppercase text-gray-600 py-9"
-          >
-            {{ page.name }}
-          </h1></router-link
-        >
-      </div>
-    </div>
+  <section>
+    <the-section></the-section>
+    <the-card v-for="item in items" :product="item" :key="item._id"></the-card>
   </section>
 </template>
+
 <script lang="ts">
-import pages from "@/data/pages";
+import TheSection from "@/components/TheSection.vue";
+import TheCard from "@/components/TheCard.vue";
+import axios from "axios";
+
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: number;
+}
+
 export default {
-  name: "ProductsPage",
+  components: {
+    TheSection,
+    TheCard,
+  },
   data() {
     return {
-      pages: pages,
+      items: [] as Product[],
     };
+  },
+  methods: {
+    getApiData() {
+      const apiUrl = "http://localhost:8000/api/products/";
+      axios.get(apiUrl).then((response: any) => {
+        this.items = response.data;
+        console.log(this.items);
+      });
+    },
+  },
+  mounted() {
+    this.getApiData();
   },
 };
 </script>
-
-<style scoped>
-.saira {
-  font-family: "Saira", sans-serif;
-}
-</style>
