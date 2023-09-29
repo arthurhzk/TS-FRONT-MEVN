@@ -1,5 +1,6 @@
 <template>
   <input :placeholder="placeholder" type="text" />
+  <slot></slot>
 </template>
 
 <script lang="ts">

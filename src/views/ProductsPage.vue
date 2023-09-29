@@ -1,7 +1,14 @@
 <template>
   <section>
     <the-section></the-section>
-    <the-card v-for="item in items" :product="item" :key="item._id"></the-card>
+
+    <div class="grid grid-cols-4">
+      <the-card
+        v-for="item in items"
+        :product="item"
+        :key="item._id"
+      ></the-card>
+    </div>
   </section>
 </template>
 
