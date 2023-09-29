@@ -2,10 +2,14 @@
   <header>
     <nav class="h-20 bg-slate-50 flex items-center justify-around">
       <router-link to="/" class="cursor-pointer">
-        <h1 class="saira text-4xl text-gray-600">Kunz Shoes</h1>
+        <h1 class="saira text-4xl text-gray-600 hover:text-orange-500">
+          Kunz Shoes
+        </h1>
       </router-link>
-      <div class="rounded-md px-4 py-2">
-        <the-input placeholder="Procurando por algo?" class="text-sm"
+      <div class="rounded-md px-4 py-2 bg-slate-50 flex">
+        <the-input
+          class="text-sm bg-slate-50"
+          placeholder="Procurando por algo?"
           ><the-icon icon="fas fa-search"></the-icon
         ></the-input>
         <router-link to="/cart">
@@ -14,6 +18,7 @@
             icon="fas fa-shopping-cart"
           ></the-icon>
         </router-link>
+        <p class="ml-10 cursor-pointer hover:text-orange-500">Entrar</p>
       </div>
     </nav>
   </header>
