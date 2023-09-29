@@ -1,5 +1,5 @@
 <template>
-  <input :placeholder="placeholder" type="text" />
+  <input class="outline-none" :type="type" :placeholder="placeholder" />
   <slot></slot>
 </template>
 
@@ -10,6 +10,10 @@ export default {
     placeholder: {
       type: String,
       required: true,
+    },
+    type: {
+      type: String,
+      default: "text",
     },
   },
 };

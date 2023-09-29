@@ -1,8 +1,9 @@
 <template>
   <div class="flex">
     <div class="flex flex-col items-center">
-      <img class="w-50 h-80 rounded-lg" :src="product.image" />
-
+      <router-link :to="`/${product._id}`">
+        <img class="w-50 h-80 rounded-lg" :src="product.image" />
+      </router-link>
       <p class="text-xl text-gray-500 font-light leading-6 pt-2">
         {{ product.name }}
       </p>
