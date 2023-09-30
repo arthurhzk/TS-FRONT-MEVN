@@ -1,6 +1,6 @@
 <template>
   <section>
-    <the-section></the-section>
+    <the-section> </the-section>
 
     <div class="grid grid-cols-4">
       <the-card
@@ -15,32 +15,32 @@
 <script lang="ts">
 import TheSection from "@/components/TheSection.vue";
 import TheCard from "@/components/TheCard.vue";
+import TheInput from "@/components/atoms/TheInput.vue";
 import axios from "axios";
-
-interface Product {
-  _id: string;
-  name: string;
-  description: string;
-  price: number;
-}
-
+import type { Product } from "@/domain/Product";
+import { useProductStore } from "@/stores/productsStore";
 export default {
   components: {
     TheSection,
     TheCard,
+    TheInput,
+  },
+  setup() {
+    const productsStore = useProductStore();
+    return {
+      productsStore,
+    };
   },
   data() {
     return {
+      updateValue: "" as any,
       items: [] as Product[],
     };
   },
   methods: {
-    getApiData() {
-      const apiUrl = "http://localhost:8000/api/products/";
-      axios.get(apiUrl).then((response: any) => {
-        this.items = response.data;
-        console.log(this.items);
-      });
+    async getApiData() {
+      await this.productsStore.fetchProducts();
+      this.items = this.productsStore.products;
     },
   },
   mounted() {

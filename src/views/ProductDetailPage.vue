@@ -31,13 +31,7 @@
 <script lang="ts">
 import axios from "axios";
 import TheButton from "@/components/atoms/TheButton.vue";
-interface Product {
-  _id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-}
+import type { Product } from "@/domain/Product";
 export default {
   name: "ProductDetailPage",
   data() {

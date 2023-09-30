@@ -1,7 +1,4 @@
-export interface Page {
-  name: string;
-  path: string;
-}
+import type { Page } from "@/domain/Page";
 
 const pages: Page[] = [
   {
