@@ -1,6 +1,6 @@
 <template>
   <section>
-    <the-section> </the-section>
+    <the-section></the-section>
     <div class="grid grid-cols-4">
       <the-card
         @search="updateValue"
@@ -40,10 +40,14 @@ export default {
     async getApiData() {
       await this.productsStore.fetchProducts();
       this.items = this.productsStore.products;
+      this.sortProductsByAlphabeticalOrder();
     },
     handleSearch() {
       this.productsStore.searchQuery = this.updateValue;
       this.getApiData();
+    },
+    sortProductsByAlphabeticalOrder() {
+      this.productsStore.products.sort((a, b) => a.name.localeCompare(b.name));
     },
   },
   mounted() {
