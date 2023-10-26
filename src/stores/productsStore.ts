@@ -5,12 +5,33 @@ import axios from "axios";
 export const useProductStore = defineStore("products", {
   state: () => ({
     products: [] as Product[],
+    searchQuery: "",
+    cartItems: [] as Product[],
   }),
   actions: {
     async fetchProducts() {
       const response = await axios.get("http://localhost:8000/api/products");
       this.products = response.data;
-      console.log(this.products);
+    },
+    addToCart(product: Product) {
+      if (this.cartItems.find((item) => item._id === product._id)) {
+        return;
+      } else {
+        this.cartItems.push(product);
+      }
+    },
+    removeFromCart(product: Product) {
+      const index = this.cartItems.indexOf(product);
+      if (index !== -1) {
+        this.cartItems.splice(index, 1);
+      }
+    },
+  },
+  getters: {
+    filteredProducts(): Product[] {
+      return this.products.filter((product) =>
+        product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     },
   },
 });

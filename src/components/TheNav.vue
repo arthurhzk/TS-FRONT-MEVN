@@ -7,11 +7,12 @@
         </h1>
       </router-link>
       <div class="rounded-md px-4 py-2 bg-slate-50 flex">
-        <the-input
+        <input
           class="text-sm bg-slate-50"
           placeholder="Procurando por algo?"
-          ><the-icon icon="fas fa-search"></the-icon
-        ></the-input>
+          v-model="updateValue"
+        />
+        <the-icon icon="fas fa-search"></the-icon>
         <router-link to="/cart">
           <the-icon
             class="cursor-pointer ml-10"
@@ -27,11 +28,36 @@
 <script lang="ts">
 import TheInput from "@/components/atoms/TheInput.vue";
 import TheIcon from "@/components/atoms/TheIcon.vue";
+import { useProductStore } from "@/stores/productsStore";
+import type { Product } from "@/domain/Product";
 export default {
   name: "TheNav",
   components: {
     TheInput,
     TheIcon,
+  },
+  emits: ["search"],
+  setup() {
+    const productsStore = useProductStore();
+    return {
+      productsStore,
+    };
+  },
+  data() {
+    return {
+      updateValue: "" as any,
+      items: [] as Product[],
+    };
+  },
+  methods: {
+    async getApiData() {
+      await this.productsStore.fetchProducts();
+      this.items = this.productsStore.products;
+    },
+    handleSearch() {
+      this.productsStore.searchQuery = this.updateValue;
+      this.getApiData();
+    },
   },
 };
 </script>

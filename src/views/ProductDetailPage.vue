@@ -16,14 +16,23 @@
         *Frete de R$40,00 para todo o Brasil. Grátis para compras acima de
         R$900,00.
       </p>
-      <p class="text-gray-600 font-bold leading-9 pt-10">DESCRIÇÃO</p>
-      <p class="font-light text-gray-600">
+      <the-button
+        v-if="!productOnCart"
+        class="style mt-10 mb-10"
+        @click="addCartItem"
+      >
+        Adicionar ao carrinho
+      </the-button>
+      <p style="color: green" v-if="productAdded">
+        Produto adicionado ao carrinho com sucesso!
+      </p>
+      <p class="text-gray-600 font-bold leading-9">DESCRIÇÃO</p>
+      <p class="font-light text-gray-600 mb-10">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         <br />Voluptas, reprehenderit ullam velit modi in ipsa rerum reiciendis
         dignissimos soluta ad,<br />
         laboriosam molestias pariatur aperiam quod sunt. Quod officiis in ea!
       </p>
-      <the-button class="style mt-10">Adicionar ao carrinho</the-button>
     </div>
   </section>
 </template>
@@ -32,13 +41,23 @@
 import axios from "axios";
 import TheButton from "@/components/atoms/TheButton.vue";
 import type { Product } from "@/domain/Product";
+import { useProductStore } from "@/stores/productsStore";
 export default {
   name: "ProductDetailPage",
   data() {
     return {
       product: {} as Product,
+      productAdded: false,
+      productOnCart: false,
     };
   },
+  setup() {
+    const productsStore = useProductStore();
+    return {
+      productsStore,
+    };
+  },
+
   methods: {
     async getProductById() {
       const productId = this.$route.params.id;
@@ -49,6 +68,11 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+    addCartItem() {
+      this.productAdded = true;
+      this.productOnCart = true;
+      this.productsStore.addToCart(this.product);
     },
   },
   mounted() {

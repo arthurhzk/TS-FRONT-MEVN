@@ -12,8 +12,7 @@ export default {
     },
     style: {
       type: String,
-      default:
-        "bg-orange-400 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded",
+      default: "bg-orange-400  text-white font-semibold py-2 px-4 rounded",
     },
   },
 };

@@ -1,9 +1,9 @@
 <template>
   <section>
     <the-section> </the-section>
-
     <div class="grid grid-cols-4">
       <the-card
+        @search="updateValue"
         v-for="item in items"
         :product="item"
         :key="item._id"
@@ -16,7 +16,6 @@
 import TheSection from "@/components/TheSection.vue";
 import TheCard from "@/components/TheCard.vue";
 import TheInput from "@/components/atoms/TheInput.vue";
-import axios from "axios";
 import type { Product } from "@/domain/Product";
 import { useProductStore } from "@/stores/productsStore";
 export default {
@@ -41,6 +40,10 @@ export default {
     async getApiData() {
       await this.productsStore.fetchProducts();
       this.items = this.productsStore.products;
+    },
+    handleSearch() {
+      this.productsStore.searchQuery = this.updateValue;
+      this.getApiData();
     },
   },
   mounted() {
