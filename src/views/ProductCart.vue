@@ -83,12 +83,12 @@ export default {
       });
     },
     decrementItem(item: any) {
-      if (this.quantity === 1) {
+      if ((this.quantity -= 1)) {
         return;
       }
       this.productsStore.cartItems.forEach((product) => {
         if (product._id === item._id) {
-          this.quantity -= 1;
+          this.quantity += 1;
         }
       });
     },

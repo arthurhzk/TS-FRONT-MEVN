@@ -28,6 +28,15 @@ const router = createRouter({
       name: "cart",
       component: () => import("@/views/ProductCart.vue"),
     },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("@/views/ProductLogin.vue"),
+    },
+    {
+      path: "/:catchAll(.*)*",
+      redirect: { name: "page" },
+    },
   ],
 });
 

@@ -25,7 +25,9 @@
             >{{ cartItemsLength }}</span
           >
         </router-link>
-        <p class="ml-10 cursor-pointer hover:text-orange-500">Entrar</p>
+        <router-link to="/login">
+          <p class="ml-10 cursor-pointer hover:text-orange-500">Entrar</p>
+        </router-link>
       </div>
     </nav>
   </header>

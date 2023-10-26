@@ -66,6 +66,7 @@ export default {
         const response = await axios.get(apiUrl);
         this.product = response.data;
       } catch (error) {
+        this.$router.push("/");
         console.error(error);
       }
     },

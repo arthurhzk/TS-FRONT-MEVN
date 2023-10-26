@@ -7,6 +7,7 @@ export const useProductStore = defineStore("products", {
     products: [] as Product[],
     searchQuery: "",
     cartItems: [] as Product[],
+    filteredAndSortedProducts: [] as Product[],
   }),
   actions: {
     async fetchProducts() {

@@ -12,6 +12,7 @@
       <p v-if="price >= 900">Frete Gratis!</p>
       <p v-show="price > 0 && price < 900">Total R$ {{ total.toFixed(2) }}</p>
     </div>
+
     <the-button :disabled="disabled" class="mt-20">FINALIZAR COMPRA</the-button>
   </section>
 </template>

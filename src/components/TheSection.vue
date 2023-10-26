@@ -66,13 +66,15 @@ export default {
   },
   methods: {
     async organizeByHighestPrice() {
-      this.productStore.organizeProductsByHighestPrice();
       await this.getApiData();
+      this.productStore.organizeProductsByHighestPrice();
+
       this.organizeItems = false;
     },
     async organizeByLowestPrice() {
-      this.productStore.organizeProductsByLowestPrice();
       await this.getApiData();
+      this.productStore.organizeProductsByLowestPrice();
+
       this.organizeItems = false;
     },
     async getApiData() {
