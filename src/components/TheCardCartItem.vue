@@ -9,8 +9,7 @@
         <p class="text-lg text-gray-500 font-light leading-6">
           {{ product.name }}
         </p>
-        <p>{{ product.quantity }}</p>
-
+        <p>Quantidade: {{ quantity }}</p>
         <the-icon
           @click="removeFromCart"
           class="cursor-pointer text-red-500"
@@ -40,6 +39,9 @@ export default {
       type: Object,
       required: true,
     },
+    quantity: {
+      type: Number,
+    },
   },
   components: {
     TheIcon,
@@ -54,11 +56,6 @@ export default {
     },
     decrementItem() {
       this.$emit("decrement", this.product);
-    },
-  },
-  computed: {
-    quantity() {
-      return this.product.quantity;
     },
   },
 };

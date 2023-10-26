@@ -13,12 +13,17 @@
           v-model="updateValue"
         />
         <the-icon icon="fas fa-search"></the-icon>
-        <router-link to="/cart">
+        <router-link class="relative" to="/cart">
           <the-icon
             :class="{ 'text-orange-500': $route.path === '/cart' }"
             class="cursor-pointer ml-10"
             icon="fas fa-shopping-cart"
           ></the-icon>
+          <span
+            v-if="cartItemsLength > 0"
+            class="bg-red-500 rounded-lg w-3 h-4 absolute right-55 text-xs text-center text-white"
+            >{{ cartItemsLength }}</span
+          >
         </router-link>
         <p class="ml-10 cursor-pointer hover:text-orange-500">Entrar</p>
       </div>
@@ -58,6 +63,11 @@ export default {
     handleSearch() {
       this.productsStore.searchQuery = this.updateValue;
       this.getApiData();
+    },
+  },
+  computed: {
+    cartItemsLength() {
+      return this.productsStore.cartItems.length;
     },
   },
 };

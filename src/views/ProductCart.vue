@@ -10,7 +10,7 @@
         v-if="productsStore.cartItems.length > 0"
         class="font-saira text-base font-light leading-9"
       >
-        Total ({{ productsStore.cartItems.length }} produtos)
+        Total ({{ productsStore.cartItems.length + quantity - 1 }} produtos)
         <span class="font-strong font-bold"
           >R$ {{ totalCartItems.toFixed(2) }}</span
         >
@@ -22,9 +22,10 @@
         v-for="item in productsStore.cartItems"
         :key="item._id"
         :product="item"
+        :quantity="quantity"
         @remove="removeFromCart(item)"
-        @increment="incrementItem"
-        @decrement="decrementItem"
+        @increment="incrementItem(item)"
+        @decrement="decrementItem(item)"
       >
       </the-card-cart-item>
     </section>
@@ -52,6 +53,7 @@ export default {
   data() {
     return {
       total: 1,
+      quantity: 1,
     };
   },
   setup() {
@@ -63,7 +65,7 @@ export default {
   computed: {
     totalCartItems() {
       const total = this.productsStore.cartItems.reduce(
-        (acc, item) => acc + item.price * this.total,
+        (acc, item) => acc + item.price * this.total * this.quantity,
         0
       );
       return total;
@@ -73,13 +75,22 @@ export default {
     removeFromCart(product: any) {
       this.productsStore.removeFromCart(product);
     },
-    incrementItem() {
-      this.total += 1;
+    incrementItem(item: any) {
+      this.productsStore.cartItems.forEach((product) => {
+        if (product._id === item._id) {
+          this.quantity += 1;
+        }
+      });
     },
-    decrementItem() {
-      if (this.total > 1) {
-        this.total -= 1;
+    decrementItem(item: any) {
+      if (this.quantity === 1) {
+        return;
       }
+      this.productsStore.cartItems.forEach((product) => {
+        if (product._id === item._id) {
+          this.quantity -= 1;
+        }
+      });
     },
   },
 };
