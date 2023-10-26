@@ -27,15 +27,13 @@ export const useProductStore = defineStore("products", {
       }
     },
     organizeProductsByHighestPrice(): Product[] {
-      this.products.sort((a, b) => b.price - a.price);
+      this.products = this.products.sort((a, b) => b.price - a.price);
       return this.products;
     },
     organizeProductsByLowestPrice(): Product[] {
-      this.products.sort((a, b) => a.price - b.price);
+      this.products = this.products.sort((a, b) => a.price - b.price);
       return this.products;
     },
-  },
-  getters: {
     filteredProducts(): Product[] {
       return this.products.filter((product) =>
         product.name.toLowerCase().includes(this.searchQuery.toLowerCase())

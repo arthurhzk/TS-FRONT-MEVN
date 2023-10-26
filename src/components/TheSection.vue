@@ -21,7 +21,7 @@
       ></the-icon>
     </div>
     <div
-      class="flex absolute w-30 h-15 bg-slate-200 top-40 right-10 rounded-md shadow-md cursor-default"
+      class="flex absolute w-30 h-15 bg-slate-200 top-40 right-5 rounded-md shadow-md cursor-default"
       v-if="organizeItems"
       style="white-space: nowrap"
     >
@@ -66,23 +66,18 @@ export default {
   },
   methods: {
     async organizeByHighestPrice() {
-      this.getApiData();
-      this.organizeItems = false;
       this.productStore.organizeProductsByHighestPrice();
+      await this.getApiData();
+      this.organizeItems = false;
     },
     async organizeByLowestPrice() {
-      this.getApiData();
-      this.organizeItems = false;
       this.productStore.organizeProductsByLowestPrice();
+      await this.getApiData();
+      this.organizeItems = false;
     },
     async getApiData() {
       await this.productStore.fetchProducts();
     },
   },
-  mounted() {
-    this.getApiData();
-  },
 };
 </script>
-
-<style scoped></style>

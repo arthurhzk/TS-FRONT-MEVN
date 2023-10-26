@@ -4,7 +4,7 @@
     <div class="grid grid-cols-4">
       <the-card
         @search="updateValue"
-        v-for="item in items"
+        v-for="item in filteredProducts"
         :product="item"
         :key="item._id"
       ></the-card>
@@ -52,6 +52,11 @@ export default {
   },
   mounted() {
     this.getApiData();
+  },
+  computed: {
+    filteredProducts() {
+      return this.productsStore.filteredProducts();
+    },
   },
 };
 </script>

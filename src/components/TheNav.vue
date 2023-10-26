@@ -10,7 +10,7 @@
         <input
           class="text-sm bg-slate-50"
           placeholder="Procurando por algo?"
-          v-model="updateValue"
+          v-model="productsStore.searchQuery"
         />
         <the-icon icon="fas fa-search"></the-icon>
         <router-link class="relative" to="/cart">
@@ -59,10 +59,6 @@ export default {
     async getApiData() {
       await this.productsStore.fetchProducts();
       this.items = this.productsStore.products;
-    },
-    handleSearch() {
-      this.productsStore.searchQuery = this.updateValue;
-      this.getApiData();
     },
   },
   computed: {
