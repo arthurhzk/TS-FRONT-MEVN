@@ -15,6 +15,7 @@
         <the-icon icon="fas fa-search"></the-icon>
         <router-link to="/cart">
           <the-icon
+            :class="{ 'text-orange-500': $route.path === '/cart' }"
             class="cursor-pointer ml-10"
             icon="fas fa-shopping-cart"
           ></the-icon>

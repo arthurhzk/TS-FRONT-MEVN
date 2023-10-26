@@ -1,7 +1,7 @@
 <template>
   <section class="flex">
     <img
-      class="w-96 h-96 rounded-lg mt-20 ml-40"
+      class="w-96 h-96 rounded-lg mt-20 ml-10"
       :src="product.image"
       alt="Product Image"
     />
@@ -30,8 +30,8 @@
       <p class="font-light text-gray-600 mb-10">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         <br />Voluptas, reprehenderit ullam velit modi in ipsa rerum reiciendis
-        dignissimos soluta ad,<br />
-        laboriosam molestias pariatur aperiam quod sunt. Quod officiis in ea!
+        dignissimos soluta ad, laboriosam molestias pariatur aperiam quod sunt.
+        Quod officiis in ea!.
       </p>
     </div>
   </section>
