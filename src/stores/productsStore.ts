@@ -26,6 +26,14 @@ export const useProductStore = defineStore("products", {
         this.cartItems.splice(index, 1);
       }
     },
+    organizeProductsByHighestPrice(): Product[] {
+      this.products.sort((a, b) => b.price - a.price);
+      return this.products;
+    },
+    organizeProductsByLowestPrice(): Product[] {
+      this.products.sort((a, b) => a.price - b.price);
+      return this.products;
+    },
   },
   getters: {
     filteredProducts(): Product[] {

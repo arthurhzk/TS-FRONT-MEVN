@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen">
+  <section class="flex flex-col">
     <main class="flex-grow"></main>
     <footer class="bg-slate-50 text-gray-500 py-4">
       <div class="container mx-auto flex justify-between items-center">
@@ -11,7 +11,7 @@
         </ul>
       </div>
     </footer>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -28,3 +28,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+section {
+  min-height: 60vh;
+}
+</style>
