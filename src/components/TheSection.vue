@@ -1,7 +1,7 @@
 <template>
-  <section class="flex justify-around">
+  <section class="flex justify-around flex-wrap">
     <div class="flex gap-10">
-      <div v-for="page in pages">
+      <div class="page-container" v-for="page in pages">
         <router-link :to="page.path">
           <h1
             class="font-bold text-lg leading-22 uppercase text-gray-600 py-9 hover:text-orange-500"
@@ -80,6 +80,20 @@ export default {
     async getApiData() {
       await this.productStore.fetchProducts();
     },
+    closeDropdown() {
+      this.organizeItems = false;
+    },
+    pageClickHandler(e: { target: any }) {
+      if (!this.$el.contains(e.target)) {
+        this.closeDropdown();
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener("click", this.pageClickHandler);
+  },
+  beforeDestroy() {
+    window.removeEventListener("click", this.pageClickHandler);
   },
 };
 </script>

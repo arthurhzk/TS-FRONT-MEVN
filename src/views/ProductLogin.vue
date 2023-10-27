@@ -3,7 +3,7 @@
     <h1 class="font-bold text-lg leading-22 uppercase text-gray-600">Login</h1>
     <p>
       Novo no site?
-      <router-link to="/sign"
+      <router-link to="/register"
         ><span class="border-b-2 border-gray-500"
           >Registre-se</span
         ></router-link

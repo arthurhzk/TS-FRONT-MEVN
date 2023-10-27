@@ -9,6 +9,7 @@
       ></the-card>
     </div>
   </section>
+  <FormKit type="text" />
 </template>
 
 <script lang="ts">
