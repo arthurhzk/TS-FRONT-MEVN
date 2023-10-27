@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Ubuntu&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Saira&display=swap");
+
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
 body {
@@ -12,18 +15,66 @@ body {
   font-family: "Saira", sans-serif;
 }
 
+.saira {
+  font-family: "Saira Stencil One", cursive;
+}
+
 @media (max-width: 1215px) {
   .grid-cols-4 {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (max-width: 913px) {
   .grid-cols-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 608px) {
   .grid-cols-4 {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .saira {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 483px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+  }
+}
+
+@media (max-width: 378px) {
+  .title-section {
+    text-align: center;
+    justify-content: center;
+    font-size: medium;
+    padding: 10px;
+  }
+  .the-input {
+    margin-left: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .container p {
+    margin-bottom: 1rem;
+  }
+  .container ul {
+    margin-top: 1rem;
   }
 }

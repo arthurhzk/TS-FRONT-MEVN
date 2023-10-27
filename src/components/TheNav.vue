@@ -7,8 +7,8 @@
         </h1>
       </router-link>
       <div class="rounded-md px-4 py-2 bg-slate-50 flex">
-        <input
-          class="text-sm bg-slate-50"
+        <the-input
+          class="text-sm bg-slate-50 the-input"
           placeholder="Procurando por algo?"
           v-model="productsStore.searchQuery"
         />
@@ -70,9 +70,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.saira {
-  font-family: "Saira Stencil One", cursive;
-}
-</style>

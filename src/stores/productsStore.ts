@@ -40,5 +40,8 @@ export const useProductStore = defineStore("products", {
         product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
       );
     },
+    filteredProductsByType(type: string): Product[] {
+      return this.products.filter((product) => product.type === type);
+    },
   },
 });

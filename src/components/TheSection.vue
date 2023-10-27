@@ -4,7 +4,7 @@
       <div class="page-container" v-for="page in pages">
         <router-link :to="page.path">
           <h1
-            class="font-bold text-lg leading-22 uppercase text-gray-600 py-9 hover:text-orange-500"
+            class="font-bold text-lg leading-22 uppercase text-gray-600 py-9 hover:text-orange-500 title-section"
             :class="{ 'text-orange-500': $route.path === page.path }"
           >
             {{ page.name }}
@@ -97,3 +97,14 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+@media (max-width: 378px) {
+  h1 {
+    text-align: center;
+    justify-content: center;
+    font-size: medium;
+    padding: 8px;
+  }
+}
+</style>
