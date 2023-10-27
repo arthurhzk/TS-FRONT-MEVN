@@ -14,7 +14,7 @@
     <form class="flex flex-col gap-5 pt-7">
       <div>
         <input
-          class="rounded-md px-3 py-2 w-80 border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="rounded-md px-3 py-2 w-80 border-gray-400 focus:outline-none"
           type="text"
           name="login"
           placeholder="Login ou E-mail"
@@ -22,7 +22,7 @@
       </div>
       <div>
         <input
-          class="rounded-md px-3 py-2 w-80 border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="rounded-md px-3 py-2 w-80 border-gray-400 focus:outline-none"
           type="password"
           name="password"
           placeholder="Senha"
